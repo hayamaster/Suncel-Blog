@@ -136,7 +136,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const formattedPaths = await getSuncelStaticPaths({
     pageOptions: {
-      // path: `(?!(^\s$)).*$`,
+      path: `(?!(^\s$)).*$`,
     },
   });
 
