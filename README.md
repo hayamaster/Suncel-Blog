@@ -39,8 +39,8 @@ On top of that, you have a Block example and a wrapper of the rich text with som
 
 - npm run dev, then access the admin via /admin and login with the same id/pwd you have on app.suncel.io
 - In the left menu, go to Globals and create a global of type Header. Add a logo and a link (link+label).
-- Copy the id of the Header created in Globals (button "Copy Id") and replace in the code REPLACE_BY_HEADER_GLOBAL_ID by your header ID
-- Do the same for the footer with a Global type 'Footer', and in the code, replace REPLACE_BY_FOOTER_GLOBAL_ID by your footer ID
+- Copy the id of the Header created in Globals (button "Copy Id") and replace in the code 649e77fd961da7449f4dcc4a by your header ID
+- Do the same for the footer with a Global type 'Footer', and in the code, replace 649e785e961da7449f4dcc84 by your footer ID
 
 ### Create your first page and add Blocks
 
@@ -50,7 +50,7 @@ On top of that, you have a Block example and a wrapper of the rich text with som
 
 ### Last Articles
 
-- In your admin panel, in the pages section, create a **blog** folder that will contain all your articles, click on it, copy the ID of the folder from the url and replace in your code all the occurrences of REPLACE_BY_BLOG_FOLDER_ID by your ID
+- In your admin panel, in the pages section, create a **blog** folder that will contain all your articles, click on it, copy the ID of the folder from the url and replace in your code all the occurrences of 649e7a10961da7449f4dcd94 by your ID
 
 ### **📧 Contact**
 

@@ -43,16 +43,16 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }
 
   //Fetch Globals
-  const { data: header } = await getGlobal("REPLACE_BY_HEADER_GLOBAL_ID", {
+  const { data: header } = await getGlobal("649e77fd961da7449f4dcc4a", {
     language: "en",
   });
 
-  const { data: footer } = await getGlobal("REPLACE_BY_FOOTER_GLOBAL_ID", {
+  const { data: footer } = await getGlobal("649e785e961da7449f4dcc84", {
     language: "en",
   });
 
   const { data: lastArticles } = await getPages({
-    folder: "REPLACE_BY_BLOG_FOLDER_ID",
+    folder: "649e7a10961da7449f4dcd94",
     status: "Published",
     folder_depth: 10,
     sort_by: "createdAt",

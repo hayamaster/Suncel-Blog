@@ -1,7 +1,11 @@
 //
 import { GetStaticPaths, GetStaticProps } from "next";
 import React, { ReactElement } from "react";
-import { PageRender, getSuncelStaticProps, getSuncelStaticPaths } from "@suncel/nextjs";
+import {
+  PageRender,
+  getSuncelStaticProps,
+  getSuncelStaticPaths,
+} from "@suncel/nextjs";
 import { ContentWrapper } from "@/components/layouts/contentWrapper";
 import { Header } from "@/components/layouts/header";
 import { getGlobal, getPage, getPages, Page } from "@suncel/nextjs/api";
@@ -17,14 +21,27 @@ export default function Slug(props: any) {
 }
 
 Slug.getLayout = function getLayout(page: ReactElement) {
-  const { header, footer, relatedArticles, categoryArticles, isCategoryPage, isRelatedArticlePage } = page?.props;
+  const {
+    header,
+    footer,
+    relatedArticles,
+    categoryArticles,
+    isCategoryPage,
+    isRelatedArticlePage,
+  } = page?.props;
 
   return (
     <ContentWrapper>
       <Header {...header} />
       {page}
-      <RelatedArticles articles={relatedArticles} isRelatedArticlePage={isRelatedArticlePage} />
-      <CategoryArticles articles={categoryArticles} isCategoryPage={isCategoryPage} />
+      <RelatedArticles
+        articles={relatedArticles}
+        isRelatedArticlePage={isRelatedArticlePage}
+      />
+      <CategoryArticles
+        articles={categoryArticles}
+        isCategoryPage={isCategoryPage}
+      />
       <Footer {...footer} />
     </ContentWrapper>
   );
@@ -45,14 +62,17 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   // Fetch Related Articles
   let relatedArticles: Pick<Page, "status" | "properties" | "path">[] = [];
   if (suncelProps?.page_settings?.related_article?.articles) {
-    const relatedArticlesRes: Pick<Page, "status" | "properties" | "path">[] = await Promise.all(
-      suncelProps?.page_settings?.related_article?.articles?.map(async (elem: any) => {
-        const { data } = await getPage(elem._id, {
-          fields: ["properties", "path", "status"],
-        });
-        return data;
-      })
-    );
+    const relatedArticlesRes: Pick<Page, "status" | "properties" | "path">[] =
+      await Promise.all(
+        suncelProps?.page_settings?.related_article?.articles?.map(
+          async (elem: any) => {
+            const { data } = await getPage(elem._id, {
+              fields: ["properties", "path", "status"],
+            });
+            return data;
+          }
+        )
+      );
     relatedArticles = relatedArticlesRes.filter((e) => e.status == "Published");
   }
 
@@ -70,11 +90,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }
 
   //Fetch Globals
-  const { data: header } = await getGlobal("REPLACE_BY_HEADER_GLOBAL_ID", {
+  const { data: header } = await getGlobal("649e77fd961da7449f4dcc4a", {
     language: "en",
   });
 
-  const { data: footer } = await getGlobal("REPLACE_BY_FOOTER_GLOBAL_ID", {
+  const { data: footer } = await getGlobal("649e785e961da7449f4dcc84", {
     language: "en",
   });
 
@@ -106,7 +126,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
           ...page.properties.metas?.sns.facebook,
         })) || [],
       isCategoryPage: suncelProps?.content_type == "categoryPage" || false,
-      isRelatedArticlePage: suncelProps?.content_type == "related_article" || false,
+      isRelatedArticlePage:
+        suncelProps?.content_type == "related_article" || false,
     },
     revalidate: 10,
   };
