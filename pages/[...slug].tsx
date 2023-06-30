@@ -33,7 +33,7 @@ Slug.getLayout = function getLayout(page: ReactElement) {
   return (
     <ContentWrapper>
       <Header {...header} />
-      {page}
+      {/* {page} */}
       <RelatedArticles
         articles={relatedArticles}
         isRelatedArticlePage={isRelatedArticlePage}
