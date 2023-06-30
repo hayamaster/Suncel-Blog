@@ -33,7 +33,7 @@ Slug.getLayout = function getLayout(page: ReactElement) {
   return (
     <ContentWrapper>
       <Header {...header} />
-      {/* {page} */}
+      {page}
       <RelatedArticles
         articles={relatedArticles}
         isRelatedArticlePage={isRelatedArticlePage}
@@ -136,7 +136,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const formattedPaths = await getSuncelStaticPaths({
     pageOptions: {
-      path: `(?!(^\s$)).*$`,
+      // path: `(?!(^\s$)).*$`,
     },
   });
 
