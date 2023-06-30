@@ -145,6 +145,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // We'll pre-render only these paths at build time.
     // { fallback: blocking } will server-render pages
     // on-demand if the path doesn't exist.
-    fallback: "blocking",
+    fallback: false,
   };
 };
